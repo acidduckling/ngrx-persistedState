@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
+import { Store, State } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { Tutorial } from '../models/tutorial.model';
 import * as TutorialActions from '../actions/tutorial.actions';
+import 'rxjs/add/operator/take';
 
 @Component({
   selector: 'app-create',
@@ -18,5 +19,11 @@ export class CreateComponent implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.store.subscribe(() => {
+      let state: AppState;
+      this.store.take(1).subscribe(s => (state = s));
+      localStorage.setItem('state', JSON.stringify(state));
+    });
+  }
 }

@@ -19,6 +19,17 @@ export function tutorialReducer(
       return state.filter((v, i) => i !== action.payload);
 
     default:
-      return [defaultState];
+      return loadState();
+  }
+}
+
+function loadState(): Tutorial[] {
+  try {
+    const state = localStorage.getItem('state');
+    const parsed = <Tutorial[]>JSON.parse(state).tutorial;
+    return Array.isArray(parsed) && parsed.length > 0 ? parsed : [defaultState];
+  } catch {
+    localStorage.removeItem('state');
+    return [defaultState];
   }
 }
