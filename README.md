@@ -1,5 +1,8 @@
 # NgrxTut
 
+Based on the video here: https://www.youtube.com/watch?v=9P5DTlg9oLc
+https://coursetro.com/posts/code/151/Angular-Ngrx-Store-Tutorial---Learn-Angular-State-Management
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
